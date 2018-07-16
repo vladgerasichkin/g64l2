@@ -28,6 +28,8 @@ class ViewController: UIViewController {
         
         studentWillLive(scholarship: 700, percentage: 3, studentNeedsToHave: 2400) //2.3
         
+        findReversedNumber(number: 1024)
+        
         
         
         
@@ -138,6 +140,36 @@ class ViewController: UIViewController {
             months = months + 1
         }
         print("Хватит денег на \(months) месяц(-ев)(-а).")
+    }
+    
+    /////////////////Блок 2 Задача 4
+    func findReversedNumber(number: Int, power1: Double = 1) {
+        var numberReserved = number
+        var power = 0.0
+        var number1 = number
+        var number2 = 0
+        
+        func countPower(){
+            while Int(Double(number1) / (pow(10.0, power))) != 0 {
+                power = power + 1
+            }
+            power = power - 1
+        }
+        
+        func countBackNumber(){
+            for _ in 0..<Int(power) {
+                number1 = ((numberReserved) % Int(pow(10.0, power1)))
+                number1 = number1 * Int(pow(10.0, power))
+                numberReserved = numberReserved / Int(pow(10.0, power1))
+                power = power - 1
+                number2 = number2 + number1
+            }
+            number2 = number2 + numberReserved
+        }
+        print("Число -  \(number)")
+        countPower()
+        countBackNumber()
+        print("Обратное ему число - \(number2)")
     }
     
 }
