@@ -24,7 +24,9 @@ class ViewController: UIViewController {
         
         todaysPrice(price: 24, past: 1826, nowadaysYear: 2018) //2.1
         
-        studentsExpenses(scholarship: 700, percentage: 3, months: 10)
+        studentsExpenses(scholarship: 700, percentage: 3, months: 10) //2.2
+        
+        studentWillLive(scholarship: 700, percentage: 3, studentNeedsToHave: 2400) //2.3
         
         
         
@@ -33,13 +35,13 @@ class ViewController: UIViewController {
     /////////////////Блок 1 Задача 0
     func chooseLargerNumber(_ number1: Int, _ number2: Int ) {
         if number1 > number2 {
-            print("Наибольшее из двух чисел -", number1)
+            print("Наибольшее из двух чисел - \(number1)")
         }
         else if number1 < number2 {
-            print("Наибольшее из двух чисел -", number2)
+            print("Наибольшее из двух чисел - \(number2)")
         }
         else {
-            print("Числа равны между собой и равняются -", number1)
+            print("Числа равны между собой и равняются - \(number1)")
         }
     }
     
@@ -72,10 +74,10 @@ class ViewController: UIViewController {
             divider = divider + (number - (number - 1))
             if number % divider  == 0 {
                 counter = counter + 1
-                print(counter," делитель - ", divider)
+                print("\(counter) делитель - \(divider)")
             }
         }
-        print("Всего делителей - ", counter)
+        print("Всего делителей - \(counter)")
         
     }
     
@@ -90,13 +92,13 @@ class ViewController: UIViewController {
             divider = divider + (number - (number - 1))
             if number % divider  == 0 {
                 counter = counter + 1
-                print(counter,"делитель -", divider)
+                print("\(counter) делитель - \(divider)")
                 dividerNew = dividerNew + divider
             }
         }
-        print("Сумма делителей -", dividerNew)
+        print("Сумма делителей - \(dividerNew)")
         if dividerNew == number {
-            print("ЧИСЛО", number, "- СОВЕРШЕННОЕ.")
+            print("ЧИСЛО \(number) - СОВЕРШЕННОЕ.")
         }
     }
     
@@ -120,11 +122,23 @@ class ViewController: UIViewController {
         }
         
         let studentNeedsToHave = expenses - Double(scholarship * months)
-        print("Затраты на \(months) мес -", expenses)
-        print("Требуется доложить до стипендии -", studentNeedsToHave)
+        print("Затраты на \(months) мес - \(expenses)")
+        print("Требуется доложить до стипендии - \(studentNeedsToHave)")
         return(expenses, studentNeedsToHave)
     }
     
+    /////////////////Блок 2 Задача 3
+    func studentWillLive (scholarship: Int, percentage: Int, studentNeedsToHave: Double) {
+        var studentNeedsToHave1 = studentNeedsToHave
+        var months = 0
+        var expensesForMonth = 1000.0
+        while studentNeedsToHave1 >= 0 {
+            expensesForMonth = expensesForMonth + (expensesForMonth / 100) * Double(percentage)
+            studentNeedsToHave1 = studentNeedsToHave1 - (expensesForMonth - Double(scholarship))
+            months = months + 1
+        }
+        print("Хватит денег на \(months) месяц(-ев)(-а).")
+    }
     
 }
 
