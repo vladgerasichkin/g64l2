@@ -14,6 +14,7 @@ class ViewController: UIViewController {
         super.viewDidLoad()
         chooseLargerNumber(2, 5) //1.0
         countSquaredNumber(number: 8) //1.1
+        showEveryNumberToZero(number: 8) //1.2
         
         
     }
@@ -39,6 +40,18 @@ class ViewController: UIViewController {
         return (number, squared, cubed)
         
     }
+    
+    /////////////////Блок 1 Задача 2
+    func showEveryNumberToZero(number: Int) {
+        var number1 = 0
+        var number2 = number
+        for _ in 0..<number + 1{
+            number1 = number1 + (number2 - (number2 - 1))
+            number2 = number2 - 1
+            print(number2 + 1, number1 - 1)
+        }
+    }
+    
     
 }
 
