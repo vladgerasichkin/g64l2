@@ -14,8 +14,7 @@ class ViewController: UIViewController {
         super.viewDidLoad()
         chooseLargerNumber(2, 5) //1.0
         
-        print("Квадрат \(countSquaredNumber(number: 8).number) равен \(countSquaredNumber(number: 8).squared)") //1.1
-        print("Куб \(countSquaredNumber(number: 8).number) равен \(countSquaredNumber(number: 8).cubed)") //1.1
+        countSquaredNumber(number: 8) //1.1
         
         showEveryNumberToZero(number: 8) //1.2
         
@@ -23,7 +22,9 @@ class ViewController: UIViewController {
         
         isTheNumberPerfect(number: 496) //1.4
         
+        todaysPrice(price: 24, past: 1826, nowadaysYear: 2018) //2.1
         
+        studentsExpenses(scholarship: 700, percentage: 3, months: 10)
         
         
         
@@ -46,6 +47,8 @@ class ViewController: UIViewController {
     func countSquaredNumber (number: Int) -> (number: Int, squared: Int, cubed: Int) {
         let squared = number * number
         let cubed = squared * number
+        print("Квадрат \(number) = \(squared)")
+        print("Куб \(number) = \(cubed)")
         return (number, squared, cubed)
         
     }
@@ -62,7 +65,7 @@ class ViewController: UIViewController {
     }
     
     /////////////////Блок 1 Задача 3
-    func countDividers(number: Int) -> (number: Int, counter: Int){
+    func countDividers(number: Int) {
         var divider = 0
         var counter = 0
         for _ in 0..<number - 1{
@@ -73,7 +76,7 @@ class ViewController: UIViewController {
             }
         }
         print("Всего делителей - ", counter)
-        return(number, counter)
+        
     }
     
     /////////////////Блок 1 Задача 4
@@ -95,6 +98,31 @@ class ViewController: UIViewController {
         if dividerNew == number {
             print("ЧИСЛО", number, "- СОВЕРШЕННОЕ.")
         }
+    }
+    
+    /////////////////Блок 2 Задача 1
+    func todaysPrice(price: Double, past: Int, nowadaysYear: Int) {
+        var price1 = price
+        let difference = nowadaysYear - past
+        for _ in 0..<difference {
+            price1 = price1 + (price1 / 100) * 6
+        }
+        print (price1)
+    }
+    
+    /////////////////Блок 2 Задача 2
+    func studentsExpenses(scholarship: Int, percentage: Int, months: Int) -> (expenses: Double, studentNeedsToHave: Double) {
+        var expensesForMonth: Double = 1000
+        var expenses: Double = expensesForMonth
+        for _ in 0..<months - 1 {
+            expensesForMonth = expensesForMonth + (expensesForMonth / 100) * Double(percentage)
+            expenses = expenses + expensesForMonth
+        }
+        
+        let studentNeedsToHave = expenses - Double(scholarship * months)
+        print("Затраты на \(months) мес -", expenses)
+        print("Требуется доложить до стипендии -", studentNeedsToHave)
+        return(expenses, studentNeedsToHave)
     }
     
     
