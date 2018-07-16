@@ -12,7 +12,9 @@ class ViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        chooseLargerNumber(2, 5)
+        chooseLargerNumber(2, 5) //1.0
+        countSquaredNumber(number: 8) //1.1
+        
         
     }
     /////////////////Блок 1 Задача 0
@@ -28,6 +30,15 @@ class ViewController: UIViewController {
         }
     }
     
+    /////////////////Блок 1 Задача 1
+    func countSquaredNumber (number: Int) -> (number: Int, squared: Int, cubed: Int) {
+        let squared = number * number
+        let cubed = squared * number
+        print("Квадрат числа \(number) равен \(squared)")
+        print("Куб числа \(number) равен \(cubed)")
+        return (number, squared, cubed)
+        
+    }
     
 }
 
