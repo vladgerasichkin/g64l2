@@ -21,6 +21,8 @@ class ViewController: UIViewController {
         
         countDividers(number: 496) //1.3
         
+        isTheNumberPerfect(number: 496) //1.4
+        
         
         
         
@@ -60,7 +62,7 @@ class ViewController: UIViewController {
     }
     
     /////////////////Блок 1 Задача 3
-    func countDividers(number: Int) {
+    func countDividers(number: Int) -> (number: Int, counter: Int){
         var divider = 0
         var counter = 0
         for _ in 0..<number - 1{
@@ -71,7 +73,30 @@ class ViewController: UIViewController {
             }
         }
         print("Всего делителей - ", counter)
+        return(number, counter)
     }
+    
+    /////////////////Блок 1 Задача 4
+    func isTheNumberPerfect(number: Int) {
+        
+        var divider = 0
+        var dividerNew = 0
+        var counter = 0
+        
+        for _ in 0..<number - 1{
+            divider = divider + (number - (number - 1))
+            if number % divider  == 0 {
+                counter = counter + 1
+                print(counter,"делитель -", divider)
+                dividerNew = dividerNew + divider
+            }
+        }
+        print("Сумма делителей -", dividerNew)
+        if dividerNew == number {
+            print("ЧИСЛО", number, "- СОВЕРШЕННОЕ.")
+        }
+    }
+    
     
 }
 
