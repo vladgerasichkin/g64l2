@@ -13,8 +13,17 @@ class ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         chooseLargerNumber(2, 5) //1.0
-        countSquaredNumber(number: 8) //1.1
+        
+        print("Квадрат \(countSquaredNumber(number: 8).number) равен \(countSquaredNumber(number: 8).squared)") //1.1
+        print("Куб \(countSquaredNumber(number: 8).number) равен \(countSquaredNumber(number: 8).cubed)") //1.1
+        
         showEveryNumberToZero(number: 8) //1.2
+        
+        countDividers(number: 496) //1.3
+        
+        
+        
+        
         
         
     }
@@ -35,8 +44,6 @@ class ViewController: UIViewController {
     func countSquaredNumber (number: Int) -> (number: Int, squared: Int, cubed: Int) {
         let squared = number * number
         let cubed = squared * number
-        print("Квадрат числа \(number) равен \(squared)")
-        print("Куб числа \(number) равен \(cubed)")
         return (number, squared, cubed)
         
     }
@@ -52,6 +59,19 @@ class ViewController: UIViewController {
         }
     }
     
+    /////////////////Блок 1 Задача 3
+    func countDividers(number: Int) {
+        var divider = 0
+        var counter = 0
+        for _ in 0..<number - 1{
+            divider = divider + (number - (number - 1))
+            if number % divider  == 0 {
+                counter = counter + 1
+                print(counter," делитель - ", divider)
+            }
+        }
+        print("Всего делителей - ", counter)
+    }
     
 }
 
